@@ -22,8 +22,8 @@ jobs:
 
     - name: Check target availability
       run: |
-        echo "Memeriksa sambungan ke $BASE_URL..."
-        curl -v --max-time 15 --insecure "$BASE_URL" || (echo -e "\n[RALAT] Runner tidak dapat menghubungi sasaran URL. Sekatan firewall atau intranet dikesan." && exit 1)
+        echo "Checking connectivity to $BASE_URL..."
+        curl -v --max-time 15 --insecure "$BASE_URL" || (echo -e "\n[ERROR] Runner cannot reach the target URL. Check firewall or internal network restrictions." && exit 1)
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
