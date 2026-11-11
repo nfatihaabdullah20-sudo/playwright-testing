@@ -1,0 +1,32 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://mytnbawprtw-s.mytnb.com.my:8041/');
+  await page.locator('#txtusername').click();
+  await page.locator('#txtusername').fill('tester87.tnb@gmail.com');
+  await page.locator('#txtpassword').click();
+  await page.locator('#txtpassword').fill('a123123123');
+  await page.getByRole('button', { name: 'Login', exact: true }).click();
+  await page.goto('https://mytnbawprtw-s.mytnb.com.my:8041/AccountManagement/IndividualDashboard');
+  await page.getByRole('button', { name: 'Later' }).click();
+  await page.getByRole('link', { name: 'Apply' }).click();
+  await page.locator('a').filter({ hasText: 'I want to check my' }).click();
+  await page.getByRole('button', { name: 'View' }).nth(4).click();
+  await page.getByRole('button', { name: 'Start Application' }).click();
+  await page.getByRole('button', { name: 'Save and Proceed' }).click();
+  await page.getByRole('button', { name: 'Save and Proceed' }).click();
+  await page.getByRole('button', { name: 'Save and Proceed' }).click();
+  await page.locator('.default-spacing > .square > label').first().click();
+  await page.locator('.default-spacing > .square > label').first().check();
+  await page.locator('#chkDeclarationModalPopup').click();
+  await page.locator('#btnAgreeDeclaration').click();
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.locator('#number1').click();
+  await page.locator('#number1').fill('3');
+  await page.locator('#number2').fill('4');
+  await page.locator('#number3').fill('9');
+  await page.locator('#number4').fill('5');
+  await page.locator('#number5').fill('2');
+  await page.locator('#number6').fill('6');
+  await page.getByRole('button', { name: 'Discard' }).click();
+});
